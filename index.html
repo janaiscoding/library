@@ -9,10 +9,15 @@
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    <form>
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" value="">
-        <button class="add-book">Add Book</button>
+    <form class="library-form">
+        <legend>Add your book:</legend>
+        <label for="title">Book title:</label>
+        <input type="text" id="title" name="title">
+        <label for="author">Book author:</label>
+        <input type="text" id="author" name="author">
+        <button class="add-book">Add</button>
+        <button class="show-library">Show Books</button>
+        <button class="clear-inputs">Clear</button>
     </form>
 </body>
 </html>
