@@ -1,36 +1,40 @@
 let myLibrary = [];
-let headers = ["title", "author"];
+let tableData = ["title", "author", "pages", "status"];
+
 //constructor
-function Book(title, author){
+function Book(title, author, pages, status){
     this.title = title;
     this.author = author;
+    this.pages = pages;
+    this.status = status;
 }
 
 // function to add book 
-function addBookToLibrary(givenTitle,givenAuthor) {
-   const givenBook = new Book(givenTitle,givenAuthor);
+function addBookToLibrary(givenTitle,givenAuthor, givenPages, givenStatus) {
+   const givenBook = new Book(givenTitle,givenAuthor, givenPages, givenStatus);
    myLibrary.push(givenBook);
   }
 
 //loop and display everything that was given
-let box = document.getElementById("box");
+let librarySpace = document.getElementById("library-space");
+
 function displayLibrary(){
 // Get rid of the prior table (if it exists)
 if(document.getElementById("libraryTable")){
     document.getElementById("libraryTable").remove();
   }
 
-  let tbl = document.createElement("table");
-  tbl.id = "libraryTable";
+  let libraryTable = document.createElement("table");
+  libraryTable.id = "libraryTable";
 
   for (i = 0; i < myLibrary.length; i++) {
-    let row = document.createElement("tr");
+    let dataRow = document.createElement("tr");
     //looping the headers' elements to create all the cells
-    headers.forEach(function(header, index){
-        let cell = document.createElement("td");
-        cell.textContent = myLibrary[i][header];
-        cell.classList.add("data" + (index + 1));
-        row.appendChild(cell); 
+    tableData.forEach(function(header, index){
+        let dataCell = document.createElement("td");
+        dataCell.textContent = myLibrary[i][header];
+        dataCell.classList.add("data" + (index + 1));
+        dataRow.appendChild(dataCell); 
     });
       
     let deleteBtn = document.createElement("td");
@@ -41,9 +45,9 @@ if(document.getElementById("libraryTable")){
         myLibrary.splice(i, 1);  
         this.closest("tr").remove(); 
     });
-      row.appendChild(deleteBtn); 
-      tbl.appendChild(row);     
-      box.appendChild(tbl);     
+        dataRow.appendChild(deleteBtn); 
+        libraryTable.appendChild(dataRow);     
+        librarySpace.appendChild(libraryTable);     
     }
 }
 
@@ -53,7 +57,9 @@ addBookBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const givenTitle = document.querySelector('#title').value;
     const givenAuthor = document.querySelector('#author').value;
-    addBookToLibrary(givenTitle,givenAuthor);
+    const givenPages = document.querySelector('#pages').value;
+    const givenStatus = document.querySelector('#status').value;
+    addBookToLibrary(givenTitle,givenAuthor,givenPages,givenStatus);
     clearInput();
     displayLibrary();
 })
