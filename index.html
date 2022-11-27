@@ -9,19 +9,155 @@
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    <form class="library-form">
-        <legend>Add your book:</legend>
-        <label for="title">Book title:</label>
-        <input type="text" id="title" name="title">
-        <label for="author">Book author:</label>
-        <input type="text" id="author" name="author">
-        <label for="pages">Book pages:</label>
-        <input type="text" id="pages" name="pages">
-        <label for="status">Read</label>
-        <input type="checkbox" id="status" name="status" value="read">
-        <button class="add-book">Add</button>
-        <button class="clear-inputs">Clear</button>
-    </form>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/coding.png" alt="coding logo" width="40px" class="sidebar-logo icon">
+                <div class="sidebar-title">Dashboard</div>
+                    </div>
+        <div class="home">
+            <img src="assets/home.png" alt="homepage icon" width="30px" class="home-icon icon">
+                <p class="title">Home</p>
+                    </div>
+        <div class="profile">
+            <img src="assets/user.png" alt="user profile icon" width="30px" class="profile-icon icon">
+                <p class="title">Profile</p>
+                    </div>
+        <div class="messages">
+            <img src="assets/message.png" alt="message box icon" width="30px" class="messages-icon icon">
+                <p class="title">Messages</p>
+                    </div>
+        <div class="history">
+            <img src="assets/history.png" alt="history box icon" width="30px" class="history-icon icon">
+                <p class="title">History</p>
+                    </div>
+        <div class="tasks">
+            <img src="assets/to-do-list.png" alt="tasks icon" width="30px" class="tasks-icon icon">
+                <p class="title">Tasks</p>
+                    </div>
+        <div class="communities">
+            <img src="assets/communities.png" alt="community icon" width="30px" class="communities-icon icon"> 
+                <p class="title">Communities</p>
+                    </div>
+        <div class="settings ">
+            <img src="assets/settings.png" alt="settings icon" width="30px" class="settings-icon icon">
+                <p class="title">Settings</p>
+                    </div>
+        <div class="support">
+            <img src="assets/support.png" alt="support icon" width="30px" class="support-icon icon">
+                <p class="title">Support</p>
+                    </div>
+        <div class="privacy">
+            <img src="assets/privacy.png" alt="privacy icon" width="30px" class="privacy-icon icon">
+                <p class="title">Privacy</p>
+                    </div>
+    </div>
+
+    <div class="right-wrapper">
+        <header class="header">
+            <div class="header-first-row">
+                <div class="header-first-row-left">
+                    <img src="assets/search.png" alt="search icon" width="20px" class="search-icon">
+                        <input type="text" class="search-bar">
+                            </div>
+                <div class="header-first-row-right">
+                    <img src="assets/notification.png" alt="notification icon" width="20px" class="notification-icon"> 
+                        <img src="assets/janaiscoding.png" alt="user profile picture" width="30px" class="profile-picture">
+                            <div class="user-name"><a href="https://github.com/JanaIsCoding" class="user-name">Profile</a></div>
+                                </div>
+                                    </div>
+            <div class="header-second-row">
+                <div class="header-second-row-left">
+                    <img src="assets/janaiscoding.png" alt="user profile picture" width="50px" class="profile-picture">
+                        <div class="greeting">
+                            <p class="greeting-text">Hi there,</p>
+                                <div class="user-name-bio"><a href="https://github.com/JanaIsCoding" class="user-name-bio">Jana (@JanaIsCoding)</a></div>
+                                    </div>
+                                        </div>
+                <div class="header-second-row-right">    
+                    <button class="btn-new">New</button>
+                        <button class="btn-upload">Upload</button>
+                            <button class="btn-share">Share</button>
+                                </div>
+                                    </div>
+            </header>
+        <main class="content-container">
+            <div class="left-content">
+                <div class="left-content-title">Book Library</div>
+                <div class="card">
+                    <a href="https://janaiscoding.github.io/admin-dashboard/" class="card-title">Admin Dashboard</a>
+                        <div class="card-content">Yep, you guessed right: This is the project you're looking at right now! During this bad boy, I learned a lot about Grid and how amazing it is. I absolutely love working with it.</div>
+                            <div class="card-icons">
+                                <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
+                                    <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
+                                        <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
+                                            </div>
+                                                </div>
+                        <div class="card">
+                            <a href="https://janaiscoding.github.io/admin-dashboard/" class="card-title">Admin Dashboard</a>
+                                <div class="card-content">Yep, you guessed right: This is the project you're looking at right now! During this bad boy, I learned a lot about Grid and how amazing it is. I absolutely love working with it.</div>
+                                    <div class="card-icons">
+                                        <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
+                                            <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
+                                                <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
+                                                    </div>
+                                                        </div>
+                        <div class="card">
+                            <a href="https://janaiscoding.github.io/sign-up-form/" class="card-title">Sign-up Form</a>
+                                <div class="card-content">In this project, I practiced with HTML Forms and Validations. If you can't hug people, go Hug-A-Tree - because they can't run away. Love the nature now and forever! (fictional btw) </div>
+                                    <div class="card-icons">
+                                        <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
+                                            <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
+                                                <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
+                                    </div>
+                        </div>
+                        <div class="card">
+                            <a href="https://janaiscoding.github.io/etch-a-sketch/" class="card-title">Etch-A-Sketch</a>
+                                <div class="card-content">Beautiful DOM manipulation and JavaScript project, this is a canvas of your own where you can pixel draw anything you want! Also with changing size & color picker tool!</div>
+                                    <div class="card-icons">
+                                        <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
+                                            <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
+                                                <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
+                                    </div>
+                        </div>
+                        <div class="card">
+                            <a href="https://janaiscoding.github.io/calculator/" class="card-title">Calculator</a>
+                                <div class="card-content"> A basic calculator that performs simple arithmetics. This is a project made for practicing and learning JavaScript functions and Event Listeners. </div>
+                                    <div class="card-icons">
+                                        <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
+                                            <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
+                                                <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
+                                    </div>
+                        </div>
+        <div class="card">
+            <a href="https://janaiscoding.github.io/rock-paper-scissors/" class="card-title">Rock, Paper, Scissors</a>
+            <div class="card-content">B05 Rock, Paper, Scissors game made in JavaScript. This was the very first JavaScript project I made, and it helped me understand a lot about problem solving.</div>
+            <div class="card-icons">
+            <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
+            <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
+            <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
+        </div>
+        </div>
+    </div>
+    <div class="right-content">
+        <div class="right-content-title">Add your books</div>
+        <div class="announcement-container">
+        <form class="library-form">
+            <legend>Add your book:</legend>
+            <label for="title">Book title:</label>
+            <input type="text" id="title" name="title">
+            <label for="author">Book author:</label>
+            <input type="text" id="author" name="author">
+            <label for="pages">Book pages:</label>
+            <input type="text" id="pages" name="pages">
+            <label for="status">Read</label>
+            <input type="checkbox" id="status" name="status" value="read">
+            <button class="add-book">Add</button>
+            <button class="clear-inputs">Clear</button>
+        </form>
+
+    </div> 
+    </main>
+</div>
     <div class="library">
         <table class="library-table">
             <tr>
