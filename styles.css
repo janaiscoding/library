@@ -214,6 +214,13 @@ img.profile-picture {
     gap: 20px;
     padding: 5px;
 }
+form {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 10px;
+    border: 1px solid black;
+    padding: 20px;
+}
 
 .right-content {
     display: grid;
