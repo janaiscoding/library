@@ -33,5 +33,5 @@
 <h3> Project details </h3>
 
 - This project is part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/node-path-javascript-library) 
-- I have reused a previous projects' HTML & CSS stylings and format: [Admin Dashboard](https://github.com/janaiscoding/admin-dashboard)
+- I have reused one of my previous project's HTML & CSS stylings and format: [Admin Dashboard](https://github.com/janaiscoding/admin-dashboard)
 
