@@ -12,7 +12,7 @@
 
 <h3> Technologies </h3>
 
-- JS
+- VanillaJS
 - CSS3
 - HTML5
 
