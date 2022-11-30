@@ -63,9 +63,10 @@ body {
     --header-background-color: #f3f3f8e6;
     --button-background-color: #C65D7B;
 
-
+    --text-color-content: rgb(62, 20, 20);
     --sidebar-text-color: #FDF6EC;
-    --card-text-color: #2C3639;
+    --card-text-color: rgb(62, 20, 20);
+    --book-title-color: rgb(62, 20, 20);
     --button-text-color: #FDF6EC;
     --heading-text-color: #C65D7B;
     --subtitle-text-color: #2C3639;
@@ -194,6 +195,7 @@ img.profile-picture {
     grid-template-columns: 1fr 1fr; 
     gap: 10px;
     margin: 0px 20px;
+    grid-auto-rows: max-content;
 }
 
 .left-content-title {
@@ -238,9 +240,10 @@ form {
 .right-content-title,
 .left-content-title {
     color: var(--text-color-content);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 900;
-    padding: 10px 0px 10px 20px;
+    font-style: italic;
+    padding: 10px 0px 10px 0px;
     letter-spacing: 1px;
 
 }
@@ -274,22 +277,26 @@ form {
 }
 
 .book-title {
-    color: var(--heading-text-color);
+    color: var(--book-title-color);
     font-weight: 900;
-    font-size: 1.3rem;
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
 }
 
 .book-author,
 .book-pages {
     color: var(--card-text-color);
     font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.1rem;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
 }
 .status,
 .remove-book {
     justify-self: flex-end;
-    margin: 10px;  
+    margin-bottom: 10px;  
 }
 .remove-book {
     margin-bottom: 20px;

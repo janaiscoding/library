@@ -1,13 +1,21 @@
 let myLibrary = [
    {
-    "title": 'Fake',
-    "author": 'Author',
-    "pages": 120,
+    "title": 'Under the Pyramids',
+    "author": 'H.P. Lovecraft',
+    "pages": 263,
     "status": true
+   },
+   {
+    "title": 'Crabwalk',
+    "author": ' Günter Grass',
+    "pages": 223,
+    "status": false
    }
 ];
+
 displayLibrary();
-//constructor
+
+//object constructor
 function Book(title, author, pages, status){
     this.title = title;
     this.author = author;
@@ -50,11 +58,11 @@ function createBook(item){
     publishedTitle.classList.add('book-title');
     publishedBook.appendChild(publishedTitle);
 
-    publishedAuthor.textContent = item.author;
+    publishedAuthor.textContent = `Written by ${item.author}`;
     publishedAuthor.classList.add('book-author');
     publishedBook.appendChild(publishedAuthor);
 
-    publishedPages.textContent = item.pages;
+    publishedPages.textContent = `${item.pages} pages`;
     publishedPages.classList.add('book-pages');
     publishedBook.appendChild(publishedPages);
 
