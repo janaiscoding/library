@@ -170,6 +170,8 @@ img.profile-picture {
     align-items: center;
     gap: 20px;
 }
+/* hidden for when modal will be added
+
 .header-second-row-right{
     display: grid;
     grid-column: 3/4;
@@ -177,7 +179,7 @@ img.profile-picture {
     justify-self: right;
     align-items: center;
     gap: 20px;
-}
+} */ 
 
 .content-container {
     background-color: var(--content-background-color);
