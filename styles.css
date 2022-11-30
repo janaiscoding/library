@@ -189,7 +189,7 @@ img.profile-picture {
 .library-space {
     display: grid;
     grid-column: 1/3;
-    grid-template-columns: 1fr ; 
+    grid-template-columns: 1fr 1fr; 
     gap: 10px;
     margin: 0px 20px;
 }
@@ -226,7 +226,7 @@ form {
 
 .right-content {
     display: grid;
-    grid-column-start: 3;
+    grid-column:3/4;
     align-self: flex-start;
     gap: 10px;
     margin: 0px 20px;

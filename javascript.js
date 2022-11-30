@@ -1,5 +1,5 @@
 let myLibrary = [];
-
+addBookToLibrary('Fake Title', 'Fake Author', 129, true);
 //constructor
 function Book(title, author, pages, status){
     this.title = title;

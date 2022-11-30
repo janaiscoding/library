@@ -51,7 +51,6 @@
                 <p class="title">Privacy</p>
                     </div>
     </div>
-
     <div class="right-wrapper">
         <header class="header">
             <div class="header-first-row">
@@ -88,35 +87,27 @@
                         <div class="book-author">Fake book author.</div>
                         <div class="book-pages">199 pages.</div>
                         <button class="status">Read</button>
-                        <div class="card-icons">
-                        <img src="assets/favourite.png" alt="favourite icon" width="20px" class="card-icon-favourite">
-                        <img src="assets/watch.png" alt="watch later icon" width="20px" class="card-icon-watch">
-                        <img src="assets/share.png" alt="share icon" width="20px" class="card-icon-share">
                     </div>
                 </div>
-                
-
+            <div class="right-content">
+                    <div class="right-content-title">Add your books</div>
+                    <div class="announcement-container">
+                    <form class="library-form">
+                        <legend>Add your book:</legend>
+                        <label for="title">Book title:</label>
+                        <input type="text" id="title" name="title" required>
+                        <label for="author">Book author:</label>
+                        <input type="text" id="author" name="author" required>
+                        <label for="pages">Book pages:</label>
+                        <input type="text" id="pages" name="pages" required>
+                        <label for="status">Read</label>
+                        <input type="checkbox" id="status" name="status">
+                        <button class="add-book">Add</button>
+                        <button class="clear-inputs">Clear</button>
+                    </form>
+                    </div> 
+                </div>         
+        </main>
     </div>
-    <div class="right-content">
-        <div class="right-content-title">Add your books</div>
-        <div class="announcement-container">
-        <form class="library-form">
-            <legend>Add your book:</legend>
-            <label for="title">Book title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="author">Book author:</label>
-            <input type="text" id="author" name="author" required>
-            <label for="pages">Book pages:</label>
-            <input type="text" id="pages" name="pages" required>
-            <label for="status">Read</label>
-            <input type="checkbox" id="status" name="status">
-            <button class="add-book">Add</button>
-            <button class="clear-inputs">Clear</button>
-        </form>
-
-    </div> 
-    </main>
-</div>
-
 </body>
 </html>
