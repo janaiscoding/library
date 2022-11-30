@@ -25,15 +25,15 @@ function Book(title, author, pages, status){
 
 // function to add book 
 function addBookToLibrary(givenTitle,givenAuthor, givenPages, givenStatus) {
-   const givenBook = new Book(givenTitle,givenAuthor, givenPages, givenStatus);
-   myLibrary.push(givenBook);
+   myLibrary.push(new Book(givenTitle,givenAuthor, givenPages, givenStatus));
   }
 
 function displayLibrary(){
     const librarySpace = document.querySelector(".library-space");
-    const books = document.querySelectorAll('.book');
-    books.forEach(book => librarySpace.removeChild(book));
-
+    const bookCards = document.querySelectorAll('.book');
+    //replace the books divs with the library elements, everytime the function is called
+    bookCards.forEach(book => librarySpace.removeChild(book));
+    //iterating the array and creating each existing book
     for (let i = 0; i<= myLibrary.length-1; i++) {
         createBook(myLibrary[i]);
     }
@@ -88,7 +88,7 @@ function createBook(item){
     });
     publishedBook.appendChild(publishedRemoveBtn);
 
-    //toggle read button
+    //toggle read/not-read button
     publishedStatus.addEventListener('click', () => {
         item.status = !item.status;
         displayLibrary();
