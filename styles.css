@@ -210,14 +210,17 @@ img.profile-picture {
     display: grid;
     padding: 20px;
     height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.36);
 }
 
 form {
     display: grid;
     grid-template-columns: repeat(1,1fr);
     gap: 10px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.36);
     padding: 20px;
+    background-color: var(--card-background-color);
+    box-shadow: rgb(0 0 0 / 16%) 0px 10px 36px 0px, rgb(0 0 0 / 6%) 0px 0px 0px 1px;
 }
 
 .right-content {
@@ -243,7 +246,7 @@ form {
     font-size: 1.5rem;
     font-weight: 900;
     font-style: italic;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 20px;
     letter-spacing: 1px;
 
 }
@@ -285,7 +288,8 @@ form {
 }
 
 .book-author,
-.book-pages {
+.book-pages,
+label {
     color: var(--card-text-color);
     font-weight: 500;
     font-size: 1.2rem;
@@ -294,9 +298,15 @@ form {
     padding-bottom: 10px;
 }
 .status,
-.remove-book {
+.remove-book,
+.clear-inputs {
     justify-self: flex-end;
     margin-bottom: 10px;  
+    max-width: fit-content;
+}
+.buttons-wrapper > button {
+    justify-content: center;
+    margin-right: 20px;
 }
 .remove-book {
     margin-bottom: 20px;
