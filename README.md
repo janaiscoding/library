@@ -3,15 +3,15 @@
 - Live preview [here](https://janaiscoding.github.io/library/).
 - Library app. Storing books temporarily with JS.</br> 
 - Add/Remove, Read/Un-Read possibility on the books you added. </br>
-
+- In the future I will plan to add the storage and also make the form open on a modal.
 
 <h1> Built with </h1>
 
 <h3> Technologies </h3>
 
 - JS
-- HTML5
 - CSS3
+- HTML5
 
 <h3> Tools </h3>
 
