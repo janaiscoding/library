@@ -82,28 +82,28 @@
         <main class="content-container">
             <div class="library-space">
                 <div class="left-content-title">Book Library</div>
-                    <div class="book">
-                        <div class="book-title">Fake book title</div>
-                        <div class="book-author">Fake book author.</div>
-                        <div class="book-pages">199 pages.</div>
-                        <button class="status">Read</button>
-                    </div>
+                    <!-- injected library yay -->
                 </div>
             <div class="right-content">
                     <div class="right-content-title">Add your books</div>
-                    <div class="announcement-container">
+                    <div class="form-container">
                     <form class="library-form">
                         <legend>Add your book:</legend>
-                        <label for="title">Book title:</label>
-                        <input type="text" id="title" name="title" required>
-                        <label for="author">Book author:</label>
-                        <input type="text" id="author" name="author" required>
-                        <label for="pages">Book pages:</label>
+
+                        <label for="title">Book title*:</label>
+                        <input type="text" id="title" name="title" required="true">
+
+                        <label for="author">Book author*:</label>
+                        <input type="text" id="author" name="author" required="true">
+
+                        <label for="pages">Book pages*:</label>
                         <input type="text" id="pages" name="pages" required>
+
                         <label for="status">Read</label>
                         <input type="checkbox" id="status" name="status">
-                        <button class="add-book">Add</button>
-                        <button class="clear-inputs">Clear</button>
+
+                        <button class="add-book" type="submit">Submit</button>
+                        <button class="clear-inputs" type="button">Clear</button>
                     </form>
                     </div> 
                 </div>         

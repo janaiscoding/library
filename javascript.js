@@ -1,5 +1,12 @@
-let myLibrary = [];
-addBookToLibrary('Fake Title', 'Fake Author', 129, true);
+let myLibrary = [
+   {
+    "title": 'Fake',
+    "author": 'Author',
+    "pages": 120,
+    "status": true
+   }
+];
+displayLibrary();
 //constructor
 function Book(title, author, pages, status){
     this.title = title;
@@ -14,7 +21,6 @@ function addBookToLibrary(givenTitle,givenAuthor, givenPages, givenStatus) {
    myLibrary.push(givenBook);
   }
 
-
 function displayLibrary(){
     const librarySpace = document.querySelector(".library-space");
     const books = document.querySelectorAll('.book');
@@ -24,7 +30,8 @@ function displayLibrary(){
         createBook(myLibrary[i]);
     }
 }
-//create book everytime the display function is called 
+
+//create book everytime the display function is called - using DOM
 function createBook(item){
     const librarySpace = document.querySelector(".library-space");
 
@@ -63,7 +70,7 @@ function createBook(item){
     publishedBook.appendChild(publishedStatus);
 
     //remove book 
-    publishedRemoveBtn.textContent = 'Remove Book';
+    publishedRemoveBtn.textContent = 'Remove';
     publishedRemoveBtn.classList.add('remove-book');
     publishedRemoveBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(item),1);
@@ -81,17 +88,21 @@ function createBook(item){
 
 // store user inputs and add them to the library
 const addBookBtn = document.querySelector('.add-book');
+
 addBookBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const givenTitle = document.querySelector('#title').value;
-    const givenAuthor = document.querySelector('#author').value;
-    const givenPages = document.querySelector('#pages').value;
-    const givenStatus = document.querySelector('#status').value;
+    const givenTitle = document.getElementById('title').value;
+    const givenAuthor = document.getElementById('author').value;
+    const givenPages = document.getElementById('pages').value;
+    const givenStatus = document.getElementById('status').value;
     addBookToLibrary(givenTitle,givenAuthor,givenPages,givenStatus);
     clearInput();
     displayLibrary();
 })
+// 
+function checkForm(){
 
+}
 // clean inputs button
 const clearBtn = document.querySelector('.clear-inputs');
 clearBtn.addEventListener('click', (e) => { 

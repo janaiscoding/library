@@ -21,7 +21,10 @@
 
 <h1>Learned during this project</h1>
 
-- To be completed </br>
+- In this project, I understood how to access and iterate objects inside an array. </br>
+- I also gained a better understanding of event listeners & DOM Manipulation. </br>
+- Form Validation Contraints 
+
 
 <h3> Project details </h3>
 

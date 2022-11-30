@@ -199,23 +199,15 @@ img.profile-picture {
     align-self:flex-start;
     grid-column: span 2;
     justify-self: flex-start;
+    justify-items: flex-start;
 }
 
-.book{
+.book {
     display: grid;
     padding: 20px;
-    width: 300px;
-    height: 150px;
+    height: 200px;
 }
 
-.card-icons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    justify-self: flex-end;
-    gap: 20px;
-    padding: 5px;
-}
 form {
     display: grid;
     grid-template-columns: repeat(1,1fr);
@@ -232,32 +224,14 @@ form {
     margin: 0px 20px;
 }
 
-.announcement-container,
-.trending-container {
+.form-container {
     display:grid;
     gap: 10px;
 }
 
-.trending-card {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 50px 1fr;
-}
-
-.trending-user-image {
-    border-radius: 50%
-}
-
-.trending-info {
-    display: grid;
-    gap: 5px;
-    align-self: center;
-    margin-left: 15px;
-}
 
 /* font styles */
 .right-content-title,
-.right-content-trending-title,
 .left-content-title {
     color: var(--text-color-content);
     font-size: 1.2rem;
@@ -308,14 +282,16 @@ form {
     font-size: 1rem;
     line-height: 1.1rem;
 }
-.status {
-    max-width: fit-content;
+.status,
+.remove-book {
     justify-self: flex-end;
+    margin: 10px;  
 }
-
+.remove-book {
+    margin-bottom: 20px;
+}
 a.user-name-bio,
-a.user-name,
-a.trending-user-name {
+a.user-name {
     color: var(--user-text-color);
     font-weight: 600;
     font-size: 1.2rem;
@@ -335,8 +311,7 @@ button:hover,
 .user-name:hover,
 .title:hover,
 .user-name-bio:hover,
-.user-name:hover,
-.trending-user-name:hover{
+.user-name:hover{
     transform: scale(1.02);
     cursor: pointer;
 }
@@ -359,8 +334,7 @@ a:visited {
     box-shadow: rgb(0 0 0 / 16%) 0px 10px 36px 0px, rgb(0 0 0 / 6%) 0px 0px 0px 1px;
 }
 
-.book,
-.trending-card {
+.book {
     background-color: var(--card-background-color);
     box-shadow: rgb(0 0 0 / 16%) 0px 10px 36px 0px, rgb(0 0 0 / 6%) 0px 0px 0px 1px;
 }
