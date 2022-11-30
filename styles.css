@@ -146,7 +146,6 @@ body {
     padding: 10px 20px;
 }
 
-
 .header-first-row-left,
 .header-second-row-left {
     display: grid;
@@ -235,6 +234,7 @@ form {
     display:grid;
     gap: 10px;
 }
+
 .checkbox-wrapper {
     vertical-align: middle;
 }
@@ -248,14 +248,15 @@ form {
     font-style: italic;
     padding: 10px 0px 10px 20px;
     letter-spacing: 1px;
-
 }
+
 .greeting-text{
     color: var(--text-color-content);
     font-size: 0.9rem;
     font-weight: 900;
     letter-spacing: 1px;
 }
+
 .sidebar-title {
     color: var(--sidebar-text-color);
     font-size: 1.8rem;
@@ -264,6 +265,7 @@ form {
     font-weight: 900;   
     letter-spacing: 1px;
 }
+
 .sidebar .title {
     color: var(--sidebar-text-color);
     font-weight: 600;
@@ -297,6 +299,7 @@ label {
     letter-spacing: 1px;
     padding-bottom: 10px;
 }
+
 .status,
 .remove-book,
 .clear-inputs {
@@ -320,27 +323,15 @@ a.user-name {
 }
 
 /* all hovers */
-.icon:hover,
-.sidebar-title:hover,
-.search-icon:hover,
-.notification-icon:hover,
 button:hover,
-.card-icon-favourite:hover,
-.card-icon-watch:hover,
-.card-icon-share:hover,
-.profile-picture:hover,
 .user-name:hover,
-.title:hover,
 .user-name-bio:hover,
 .user-name:hover{
     transform: scale(1.02);
     cursor: pointer;
 }
 
-a {
-    text-decoration: none;
-}
-
+a,
 a:visited {
     text-decoration: none;
 }
