@@ -62,10 +62,12 @@ function createBook(item){
     if (item.status === false ) {
         publishedStatus.textContent = 'Not Read Yet';
         publishedStatus.style.backgroundColor = 'red';
+        publishedBook.style.borderLeft = "solid 8px red";
     }
     else {
         publishedStatus.textContent = 'Read';
         publishedStatus.style.backgroundColor = 'green';
+        publishedBook.style.borderLeft = "solid 8px green";
     }
     publishedBook.appendChild(publishedStatus);
 

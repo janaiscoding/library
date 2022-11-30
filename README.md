@@ -1,9 +1,9 @@
 <h1> Jana's Library </h1>
 
 - Live preview [here](https://janaiscoding.github.io/library/).
+- Library app. Storing books temporarily with JS.</br> 
+- Add/Remove, Read/Un-Read possibility on the books you added. </br>
 
-
-- Library app. Storing books with JS.</br> 
 
 <h1> Built with </h1>
 
