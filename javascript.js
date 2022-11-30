@@ -1,5 +1,4 @@
 let myLibrary = [];
-let tableData = ["title", "author", "pages", "status"];
 
 //constructor
 function Book(title, author, pages, status){
@@ -15,40 +14,69 @@ function addBookToLibrary(givenTitle,givenAuthor, givenPages, givenStatus) {
    myLibrary.push(givenBook);
   }
 
-//loop and display everything that was given
-let librarySpace = document.getElementById("library-space");
 
 function displayLibrary(){
-// Get rid of the prior table (if it exists)
-if(document.getElementById("libraryTable")){
-    document.getElementById("libraryTable").remove();
-  }
+    const librarySpace = document.querySelector(".library-space");
+    const books = document.querySelectorAll('.book');
+    books.forEach(book => librarySpace.removeChild(book));
 
-  let libraryTable = document.createElement("table");
-  libraryTable.id = "libraryTable";
-
-  for (i = 0; i < myLibrary.length; i++) {
-    let dataRow = document.createElement("tr");
-    //looping the headers' elements to create all the cells
-    tableData.forEach(function(header, index){
-        let dataCell = document.createElement("td");
-        dataCell.textContent = myLibrary[i][header];
-        dataCell.classList.add("data" + (index + 1));
-        dataRow.appendChild(dataCell); 
-    });
-      
-    let deleteBtn = document.createElement("td");
-        deleteBtn.textContent = "x";
-        deleteBtn.classList.add("delete");
-    
-        deleteBtn.addEventListener("click", function(){
-        myLibrary.splice(i, 1);  
-        this.closest("tr").remove(); 
-    });
-        dataRow.appendChild(deleteBtn); 
-        libraryTable.appendChild(dataRow);     
-        librarySpace.appendChild(libraryTable);     
+    for (let i = 0; i<= myLibrary.length-1; i++) {
+        createBook(myLibrary[i]);
     }
+}
+//create book everytime the display function is called 
+function createBook(item){
+    const librarySpace = document.querySelector(".library-space");
+
+    const publishedBook = document.createElement('div');
+    const publishedTitle = document.createElement('div');
+    const publishedAuthor = document.createElement('div');
+    const publishedPages = document.createElement('div');
+    const publishedStatus = document.createElement('button');
+    const publishedRemoveBtn = document.createElement('button');
+
+    publishedBook.classList.add('book');   
+    publishedBook.setAttribute('id', myLibrary.indexOf(item));
+    librarySpace.appendChild(publishedBook);
+
+    publishedTitle.textContent = item.title;
+    publishedTitle.classList.add('book-title');
+    publishedBook.appendChild(publishedTitle);
+
+    publishedAuthor.textContent = item.author;
+    publishedAuthor.classList.add('book-author');
+    publishedBook.appendChild(publishedAuthor);
+
+    publishedPages.textContent = item.pages;
+    publishedPages.classList.add('book-pages');
+    publishedBook.appendChild(publishedPages);
+
+    publishedStatus.classList.add('status');
+    if (item.read === false ) {
+        publishedStatus.textContent = 'Not Read Yet';
+        publishedStatus.style.backgroundColor = 'red';
+    }
+    else {
+        publishedStatus.textContent = 'Read';
+        publishedStatus.style.backgroundColor = 'green';
+    }
+    publishedBook.appendChild(publishedStatus);
+
+    //remove book 
+    publishedRemoveBtn.textContent = 'Remove Book';
+    publishedRemoveBtn.classList.add('remove-book');
+    publishedRemoveBtn.addEventListener('click', () => {
+        myLibrary.splice(myLibrary.indexOf(item),1);
+        displayLibrary();
+    });
+    publishedBook.appendChild(publishedRemoveBtn);
+
+    //toggle read button
+    publishedStatus.addEventListener('click', () => {
+        item.read = !item.read;
+        displayLibrary();
+    })
+    
 }
 
 // store user inputs and add them to the library
@@ -75,4 +103,6 @@ clearBtn.addEventListener('click', (e) => {
 function clearInput(){
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
+    document.querySelector('#pages').value = '';
+    document.querySelector('#status').checked = false;
 }
