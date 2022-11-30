@@ -230,7 +230,9 @@ form {
     display:grid;
     gap: 10px;
 }
-
+.checkbox-wrapper {
+    vertical-align: middle;
+}
 
 /* font styles */
 .right-content-title,
