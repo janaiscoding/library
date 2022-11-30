@@ -59,7 +59,7 @@ function createBook(item){
     publishedBook.appendChild(publishedPages);
 
     publishedStatus.classList.add('status');
-    if (item.read === false ) {
+    if (item.status === false ) {
         publishedStatus.textContent = 'Not Read Yet';
         publishedStatus.style.backgroundColor = 'red';
     }
@@ -80,7 +80,7 @@ function createBook(item){
 
     //toggle read button
     publishedStatus.addEventListener('click', () => {
-        item.read = !item.read;
+        item.status = !item.status;
         displayLibrary();
     })
     
@@ -94,7 +94,7 @@ libraryForm.addEventListener('submit', (e) => {
     const givenTitle = document.getElementById('title').value;
     const givenAuthor = document.getElementById('author').value;
     const givenPages = document.getElementById('pages').value;
-    const givenStatus = document.getElementById('status').value;
+    const givenStatus = document.getElementById('status').checked;
     addBookToLibrary(givenTitle,givenAuthor,givenPages,givenStatus);
     clearInput();
     displayLibrary();
