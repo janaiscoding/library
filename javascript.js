@@ -87,9 +87,9 @@ function createBook(item){
 }
 
 // store user inputs and add them to the library
-const addBookBtn = document.querySelector('.add-book');
+const libraryForm = document.querySelector('.library-form');
 
-addBookBtn.addEventListener('click', (e) => {
+libraryForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const givenTitle = document.getElementById('title').value;
     const givenAuthor = document.getElementById('author').value;
@@ -99,16 +99,13 @@ addBookBtn.addEventListener('click', (e) => {
     clearInput();
     displayLibrary();
 })
-// 
-function checkForm(){
 
-}
 // clean inputs button
 const clearBtn = document.querySelector('.clear-inputs');
 clearBtn.addEventListener('click', (e) => { 
-    e.preventDefault();
+   e.preventDefault();
     clearInput();
-});
+ });
 
 //refresh user inputs 
 function clearInput(){

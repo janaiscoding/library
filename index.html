@@ -91,19 +91,35 @@
                         <legend>Add your book:</legend>
 
                         <label for="title">Book title*:</label>
-                        <input type="text" id="title" name="title" required="true">
+                        <input 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        required
+                        maxlength="100">
 
                         <label for="author">Book author*:</label>
-                        <input type="text" id="author" name="author" required="true">
+                        <input 
+                        type="text" 
+                        id="author" 
+                        name="author" 
+                        required
+                        maxlength="100">
 
                         <label for="pages">Book pages*:</label>
-                        <input type="text" id="pages" name="pages" required>
+                        <input 
+                        type="number"
+                        id="pages" 
+                        name="pages" 
+                        required
+                        maxlength="5000">
 
                         <label for="status">Read</label>
-                        <input type="checkbox" id="status" name="status">
-
+                        <input 
+                        type="checkbox" 
+                        id="status">
                         <button class="add-book" type="submit">Submit</button>
-                        <button class="clear-inputs" type="button">Clear</button>
+                         <button class="clear-inputs" type="button">Clear</button>
                     </form>
                     </div> 
                 </div>         
