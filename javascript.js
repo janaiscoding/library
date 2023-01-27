@@ -1,126 +1,153 @@
-let myLibrary = [
-   {
-    "title": 'Under the Pyramids',
-    "author": 'H.P. Lovecraft',
-    "pages": 263,
-    "status": true
-   },
-   {
-    "title": 'Crabwalk',
-    "author": ' Günter Grass',
-    "pages": 223,
-    "status": false
-   }
-];
+// Data Structures
+class Book {
+    constructor(
+        title = 'Unknown',
+        author = 'Unknown',
+        pages = '0',
+        isRead = false
+      ) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+      }
+} 
 
-displayLibrary();
+class Library {
+    constructor(){
+        this.books = [];
+    }
 
-//object constructor
-function Book(title, author, pages, status){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-}
+    addBook(newBook){
+        if(!this.isInLibrary(newBook)){ //if false, add book to library constructor
+            this.books.push(newBook);
+        }
+    }
+    
+    removeBook(title){
+        this.books = this.books.filter((book)=> book.title !== title)
+    } // makes a new array of all books except the one removed.
 
-// function to add book 
-function addBookToLibrary(givenTitle,givenAuthor, givenPages, givenStatus) {
-   myLibrary.push(new Book(givenTitle,givenAuthor, givenPages, givenStatus));
-  }
-
-function displayLibrary(){
-    const librarySpace = document.querySelector(".library-space");
-    const bookCards = document.querySelectorAll('.book');
-    //replace the books divs with the library elements, everytime the function is called
-    bookCards.forEach(book => librarySpace.removeChild(book));
-    //iterating the array and creating each existing book
-    for (let i = 0; i<= myLibrary.length-1; i++) {
-        createBook(myLibrary[i]);
+    isInLibrary(newBook){
+    return this.books.some((book) => book.title === newBook.title); //returns true if new book is in library
     }
 }
+    const library = new Library();
+    const book1 = new Book('Under the Pyramids','H.P. Lovecraft',263, true);
+    const book2 = new Book('Crabwalk','Günter Grass',223, false);
+    library.addBook(book1);
+    library.addBook(book2);
 
-//create book everytime the display function is called - using DOM
-function createBook(item){
+    //ui elements 
+    const librarySpace = document.querySelector(".library-space");
+    const addBookBtn = document.querySelector('.add-book');
+    const clearBtn = document.querySelector('.clear-inputs');
+    const bookCards = document.querySelectorAll('.book');
+
+    //clear form button and reset current inputs to default
+    clearBtn.addEventListener('click', (e) => { 
+        e.preventDefault();
+         clearInput();
+      });
+    const clearInput = () => {
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+        document.querySelector('#pages').value = '';
+        document.querySelector('#status').checked = false;
+    }
+
+    const updateLibrary = () => {
+        clearInput();
+        resetLibrarySpace();
+        for (let book of library.books) {
+            createBookCard(book);
+        }
+    }
+
+    const resetLibrarySpace = () => {
+        librarySpace.innerHTML = '';
+    }
+
+    // make one new book card, function will be used everytime we update the library space
+    const createBookCard = (newBook) => {
+
     const librarySpace = document.querySelector(".library-space");
 
-    const publishedBook = document.createElement('div');
-    const publishedTitle = document.createElement('div');
-    const publishedAuthor = document.createElement('div');
-    const publishedPages = document.createElement('div');
-    const publishedStatus = document.createElement('button');
-    const publishedRemoveBtn = document.createElement('button');
+    const bookCard = document.createElement('div');
+    const title = document.createElement('div');
+    const author = document.createElement('div');
+    const pages = document.createElement('div');
+    const statusBtn = document.createElement('button');
+    const removeBtn = document.createElement('button');
 
-    publishedBook.classList.add('book');   
-    publishedBook.setAttribute('id', myLibrary.indexOf(item));
-    librarySpace.appendChild(publishedBook);
+    bookCard.classList.add('book');   
+    title.classList.add('book-title');
+    author.classList.add('book-author');
+    pages.classList.add('book-pages');
+    statusBtn.classList.add('status');
+    removeBtn.classList.add('remove-book');
 
-    publishedTitle.textContent = item.title;
-    publishedTitle.classList.add('book-title');
-    publishedBook.appendChild(publishedTitle);
+    title.textContent = newBook.title;
+    author.textContent = `Written by ${newBook.author}`;
+    pages.textContent = `${newBook.pages} pages`;
+    removeBtn.textContent = 'Remove';
+   
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    bookCard.appendChild(statusBtn);
+    bookCard.appendChild(removeBtn);
+    librarySpace.appendChild(bookCard);
 
-    publishedAuthor.textContent = `Written by ${item.author}`;
-    publishedAuthor.classList.add('book-author');
-    publishedBook.appendChild(publishedAuthor);
-
-    publishedPages.textContent = `${item.pages} pages`;
-    publishedPages.classList.add('book-pages');
-    publishedBook.appendChild(publishedPages);
-
-    publishedStatus.classList.add('status');
-    if (item.status === false ) {
-        publishedStatus.textContent = 'Not Read Yet';
-        publishedStatus.style.backgroundColor = 'red';
-        publishedBook.style.borderLeft = "solid 8px red";
+    //check status
+    if (newBook.statusBtn) {
+        statusBtn.textContent = 'Read';
+        statusBtn.style.backgroundColor = 'green';
+        bookCard.style.borderLeft = "solid 8px green";
     }
     else {
-        publishedStatus.textContent = 'Read';
-        publishedStatus.style.backgroundColor = 'green';
-        publishedBook.style.borderLeft = "solid 8px green";
+        statusBtn.textContent = 'Not Read Yet';
+        statusBtn.style.backgroundColor = 'red';
+        bookCard.style.borderLeft = "solid 8px red";
     }
-    publishedBook.appendChild(publishedStatus);
-
-    //remove book 
-    publishedRemoveBtn.textContent = 'Remove';
-    publishedRemoveBtn.classList.add('remove-book');
-    publishedRemoveBtn.addEventListener('click', () => {
-        myLibrary.splice(myLibrary.indexOf(item),1);
-        displayLibrary();
-    });
-    publishedBook.appendChild(publishedRemoveBtn);
-
+    
     //toggle read/not-read button
-    publishedStatus.addEventListener('click', () => {
-        item.status = !item.status;
-        displayLibrary();
+    statusBtn.addEventListener('click', () => {
+        newBook.statusBtn = !newBook.statusBtn;
+        updateLibrary();
+    })
+    removeBtn.onclick = removeBook
+}
+    //store and return new book from user inputs 
+    const getBookFromInput = () => {
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const pages = document.getElementById('pages').value;
+        const status = document.getElementById('status').checked;
+        return new Book(title,author,pages,status);
+    }
+
+    const addBook = (e) => {
+        e.preventDefault();
+        const newBook = getBookFromInput();
+
+        if (library.isInLibrary(newBook)){
+            errorMsg.textContent = 'This book already exists in your library';
+            errorMsg.classList.add('active');
+            return;
+        }
+        updateLibrary();
+    }
+    //click add, get book, check if it exists
+    addBookBtn.addEventListener('click', () => {
+            addBook();  
     })
     
-}
+    const removeBook = (e) =>{
+        const title = e.target.parentNode.firstChild.innerHTML.replaceAll(
+            '"',
+            ''
+          )
+    }
 
-// store user inputs and add them to the library
-const libraryForm = document.querySelector('.library-form');
-
-libraryForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const givenTitle = document.getElementById('title').value;
-    const givenAuthor = document.getElementById('author').value;
-    const givenPages = document.getElementById('pages').value;
-    const givenStatus = document.getElementById('status').checked;
-    addBookToLibrary(givenTitle,givenAuthor,givenPages,givenStatus);
-    clearInput();
-    displayLibrary();
-})
-
-// clean inputs button
-const clearBtn = document.querySelector('.clear-inputs');
-clearBtn.addEventListener('click', (e) => { 
-   e.preventDefault();
-    clearInput();
- });
-
-//refresh user inputs 
-function clearInput(){
-    document.querySelector('#title').value = '';
-    document.querySelector('#author').value = '';
-    document.querySelector('#pages').value = '';
-    document.querySelector('#status').checked = false;
-}
+    updateLibrary();

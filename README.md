@@ -27,7 +27,10 @@
 - In this project, I understood how to create an object constructor, access and iterate objects</br>
  inside an array and manipulate the objects inside the array after they have been declared. </br>
 - I also gained a better understanding of event listeners & DOM Manipulation with Objects. </br>
-- Form Validation Constraints and Preventing default on submit button.
+- Form Validation Constraints and Preventing default on submit button. </br>
+
+Step 2 of the project: Refactor using classes
+
 
 
 <h3> Project details </h3>
