@@ -4,18 +4,18 @@ class Book {
         title = 'Unknown',
         author = 'Unknown',
         pages = '0',
-        isRead = false
+        status = false
       ) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.isRead = isRead;
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.status = status
       }
 } 
 
 class Library {
     constructor(){
-        this.books = [];
+        this.books = []
     }
 
     addBook(newBook){
@@ -100,7 +100,7 @@ class Library {
     librarySpace.appendChild(bookCard);
 
     //check status
-    if (newBook.statusBtn) {
+    if (newBook.status) {
         statusBtn.textContent = 'Read';
         statusBtn.style.backgroundColor = 'green';
         bookCard.style.borderLeft = "solid 8px green";
@@ -110,13 +110,15 @@ class Library {
         statusBtn.style.backgroundColor = 'red';
         bookCard.style.borderLeft = "solid 8px red";
     }
-    
-    //toggle read/not-read button
     statusBtn.addEventListener('click', () => {
-        newBook.statusBtn = !newBook.statusBtn;
+        newBook.status = !newBook.status;
         updateLibrary();
     })
-    removeBtn.onclick = removeBook
+    removeBtn.addEventListener('click',()=> {
+        library.removeBook(newBook);
+        updateLibrary();
+    })
+   
 }
     //store and return new book from user inputs 
     const getBookFromInput = () => {
@@ -138,16 +140,9 @@ class Library {
         }
         updateLibrary();
     }
-    //click add, get book, check if it exists
-    addBookBtn.addEventListener('click', () => {
-            addBook();  
-    })
+
     
-    const removeBook = (e) =>{
-        const title = e.target.parentNode.firstChild.innerHTML.replaceAll(
-            '"',
-            ''
-          )
-    }
+    //click add, get book, check if it exists
+    addBookBtn.onclick = addBook;
 
     updateLibrary();
