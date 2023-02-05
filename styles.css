@@ -118,6 +118,9 @@ img.search-icon,
 img.profile-picture {
     justify-self: right;
 } 
+input {
+    border: 1px solid black;
+}
 
 .header-first-row-right{
     display: grid;
