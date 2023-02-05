@@ -6,7 +6,7 @@
 - Live preview [here](https://janaiscoding.github.io/library/).
 - Library app. Storing books temporarily with JS, using Classes, Objects and Array methods.</br> 
 - Add/Remove, Read/Un-Read on the books you added. </br>
-- In the future I will plan to add lobal storage.
+- In the future I will plan to add local storage.
 
 <h1> Built with </h1>
 
