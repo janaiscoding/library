@@ -6,7 +6,6 @@
 - Live preview [here](https://janaiscoding.github.io/library/).
 - Library app. Storing books temporarily with JS, using Classes, Objects and Array methods.</br> 
 - Add/Remove, Read/Un-Read on the books you added. </br>
-- In the future I will plan to add local storage.
 
 <h1> Built with </h1>
 
@@ -34,7 +33,8 @@ Step 2 of the project: Refactor using classes:
 - Initially I was stuck on this refactoring for a while, until I read and reread how classes work a bunch of times and finally understood how I can work with the arrays and objects within a class.
 - After it clicked, all I had to do was rewrite the functions so that I call and return the correct parameters.
 
-
+Step 3 of the project: Learn JavaScript form Validation
+-
 
 <h3> Project details </h3>
 
