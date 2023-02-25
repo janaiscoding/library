@@ -7,11 +7,9 @@ function validateEmail(){
     if(email.value.match(patternEmail)){
         alert("Valid")
         console.log('Email is correct')
-        email.id = 'valid'
     }
     else{
         console.log('Email is incorrect')
-        email.id = 'invalid'
     }
     }
 function validatePassword(){
@@ -19,11 +17,10 @@ function validatePassword(){
     const patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$/;
     if(password.value.match(patternPassword)){
         alert("Password is valid")
-        password.id = 'valid'
     } 
     else {
         alert('1 Upper,1 lower, 1 number, 1 symbol, min 8 chars max 24 chars')
-        password.id = 'invalid'}
+    }
 }
 
 function validatePasswordConfirm(){
@@ -33,11 +30,10 @@ function validatePasswordConfirm(){
         passwordConfirm !== '' && 
         password.value === passwordConfirm.value) {
             alert('passwords match')
-            passwordConfirm.id = 'valid'
     }
     else {
         alert('passwords must match')
-        passwordConfirm.id = 'invalid'
+
         }
 }
 function validateZipCode(){
