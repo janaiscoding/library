@@ -18,11 +18,15 @@
                 </div>
                     <input type="text" id="email" name="email">  
             </div>
-            <div class="form-group">
+            <div class="form-group w-100">
                 <div class="separate-title">
                     <label for="country">Country</label>
                 </div>
-                    <input type="text" id="country" name="country">  
+                    <select id="country" name="country w-100">
+                        <option value="US">United States</option>
+                        <option value="DE">Germany</option>
+                        <option value="RO">Romania</option>
+                    </select>
             </div>
             <div class="form-group">
             <div class="separate-title">
@@ -40,7 +44,7 @@
             <div class="separate-title">
                 <label for="password-confirm">Password Confirmation</label>
                 </div>  
-                <input type="password-confirm" id="password-confirm" name="password-confirm">
+                <input type="password" id="password-confirm" name="password-confirm">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" id="submit">Submit</button>

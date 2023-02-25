@@ -1,36 +1,68 @@
-const country = document.getElementById('country')
-const zipcode = document.getElementById('zip-code')
-const password = document.getElementById('password')
-const passwordConfirm = document.getElementById('password-confirm')
+
 const submitButton = document.getElementById('submit')
 
-const submitEvent = function(e){
-    e.preventDefault()
-    HTMLInputElement.checkValidity()
-}
-submitButton.onclick = submitEvent;
-
-class handleForm {
-    static emailError(){
-        alert("Wrong")
-        this.error.push('Email is incorrect')
-        alert('Email is incorrect')
-        email.classList.add('email:invalid')
-    }
-    static emailSuccess(){
-        alert("Valid")
-        email.classList.add('email:valid')
-    }
-
-    static validateEmail(){
+function validateEmail(){
     const email = document.getElementById('email')
     const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(email.value.match(patternEmail)) handleForm.emailSuccess()
-    else handleForm.emailError()
+    if(email.value.match(patternEmail)){
+        alert("Valid")
+        console.log('Email is correct')
+        email.id = 'valid'
     }
+    else{
+        console.log('Email is incorrect')
+        email.id = 'invalid'
+    }
+    }
+function validatePassword(){
+    const password = document.getElementById('password')
+    const patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$/;
+    if(password.value.match(patternPassword)){
+        alert("Password is valid")
+        password.id = 'valid'
+    } 
+    else {
+        alert('1 Upper,1 lower, 1 number, 1 symbol, min 8 chars max 24 chars')
+        password.id = 'invalid'}
 }
 
-let validation = new handleForm()
+function validatePasswordConfirm(){
+    const password = document.getElementById('password')
+    const passwordConfirm = document.getElementById('password-confirm')
+    if( password.value !== '' && 
+        passwordConfirm !== '' && 
+        password.value === passwordConfirm.value) {
+            alert('passwords match')
+            passwordConfirm.id = 'valid'
+    }
+    else {
+        alert('passwords must match')
+        passwordConfirm.id = 'invalid'
+        }
+}
+function validateZipCode(){
+    const country = document.getElementById('country')
+    const zipcode = document.getElementById('zip-code')
+    
+    console.log(country.value)
+    console.log(zipcode.value)
+    //country & zipcode 
+}
+const validateForm = () => {
+    validateEmail()
+    validateZipCode()
+    validatePassword()
+    validatePasswordConfirm()
+}
+const submitEvent = function(e){
+    e.preventDefault()
+    validateForm();
+}
+
+submitButton.onclick = submitEvent;
 window.onload = () => {
-    document.getElementById('email').onchange = validation.validateEmail;
+    document.getElementById('email').onchange = validateEmail;
+    document.getElementById('password').onchange = validatePassword;
+    document.getElementById('country').onchange = console.log(country.value)
+    document.getElementById('password-confirm').onchange = validatePasswordConfirm;
 }
