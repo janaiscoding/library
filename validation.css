@@ -1,3 +1,120 @@
-.email:invalid {
-    border: red 1px solid
+*{
+    margin: 0;
+    padding: 0;
+    --info-color: rgb(62, 62, 19);
+    --valid-color: rgb(63, 94, 15);
+    --invalid-color: rgb(98, 20, 20);
+    box-sizing: inherit;
+}
+.form-wrapper{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+}
+.form {
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    background-color: aliceblue;
+    text-align: left;
+}
+
+.info,
+.valid-message,
+.invalid-message {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style:italic;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+.info {
+    display:none;
+    color: var(--info-color);
+}
+.valid-message {
+    display:none;
+    color:var(--valid-color)
+}
+.invalid-message{
+    display:none;
+    color:var(--invalid-color)
+}
+.form-group {
+    border-radius: 10px;
+    background-color: aliceblue;
+    margin: 10px;
+}
+
+.form-group .separate-title { 
+    margin: 10px 0px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: black;
+    display:none;
+}
+input {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: 80%;
+    padding: 15px 20px;
+    font-size: 16px;
+    text-rendering: auto;
+    writing-mode: horizontal-tb;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display:inline-block;
+    text-align: start;
+    appearance: auto;
+    cursor: text;
+}
+input:focus {
+    border-color: #3898EC;
+    outline: 0;
+}
+.form-group select { 
+    background-color: #fff;
+    color: #696969;
+    border: 1px solid #e5e5e5;
+    padding: 15px;
+    width: 80%;
+    margin-bottom: 0;
+    border-radius: 5px;
+    outline: 0;
+    font-size: 16px;
+}
+.button {
+    font-size: 16px;
+    padding: 15px 50px;
+    background: #222d39;
+    color: white;
+    margin-top: 25px;
+    display: inline-block;
+    border-radius: 8px;
+    border: 0;
+    outline: 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+.input-valid-state{
+    background-color: rgba(0, 255, 9, 0.1);
+    border: 1px solid #1ab947;
+    color: #074e07;
+}
+.input-invalid-state{
+    color: #550606;
+    border-color: #d11818;
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+.input-valid-state:focus {
+    border-color: #1ab947;
+}
+.input-invalid-state:focus{
+    border-color: #d11818;
 }

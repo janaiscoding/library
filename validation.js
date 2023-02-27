@@ -1,64 +1,117 @@
-
-const submitButton = document.getElementById('submit')
-
-function validateEmail(){
+document.addEventListener("DOMContentLoaded", () => {
+    //SELECTORS 
     const email = document.getElementById('email')
-    const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(email.value.match(patternEmail)){
-        alert("Valid")
-        console.log('Email is correct')
-    }
-    else{
-        console.log('Email is incorrect')
-    }
-    }
-function validatePassword(){
-    const password = document.getElementById('password')
-    const patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$/;
-    if(password.value.match(patternPassword)){
-        alert("Password is valid")
-    } 
-    else {
-        alert('1 Upper,1 lower, 1 number, 1 symbol, min 8 chars max 24 chars')
-    }
-}
-
-function validatePasswordConfirm(){
     const password = document.getElementById('password')
     const passwordConfirm = document.getElementById('password-confirm')
-    if( password.value !== '' && 
-        passwordConfirm !== '' && 
-        password.value === passwordConfirm.value) {
-            alert('passwords match')
-    }
-    else {
-        alert('passwords must match')
-
-        }
-}
-function validateZipCode(){
     const country = document.getElementById('country')
     const zipcode = document.getElementById('zip-code')
-    
-    console.log(country.value)
-    console.log(zipcode.value)
-    //country & zipcode 
-}
-const validateForm = () => {
-    validateEmail()
-    validateZipCode()
-    validatePassword()
-    validatePasswordConfirm()
-}
-const submitEvent = function(e){
-    e.preventDefault()
-    validateForm();
-}
+    const submitButton = document.getElementById('submit')
 
-submitButton.onclick = submitEvent;
-window.onload = () => {
-    document.getElementById('email').onchange = validateEmail;
-    document.getElementById('password').onchange = validatePassword;
-    document.getElementById('country').onchange = console.log(country.value)
-    document.getElementById('password-confirm').onchange = validatePasswordConfirm;
-}
+    //VARIABLES
+    let emailIsValid = false;
+    let pwIsValid = false;
+    let zipcodeIsValid = false;
+    let pwcIsValid = false;
+    
+    //HELPER FUNCTIONS 
+    const validateEmail = (value) => {
+        const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(value.match(patternEmail)){
+            return true;
+        } 
+        return false;
+    } 
+    const validatePassword = (value) => {
+        const patternPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$/;
+        const passwordInfo = document.querySelector('.info-pw');
+        if(value.match(patternPassword)){
+            passwordInfo.innerHTML = "Password is valid";
+            return true;
+        }
+        else {
+          passwordInfo.innerHTML = "1 Upper, 1 Lower, 1 special symbol, 8 chars";
+          passwordInfo.style.display = "block";
+          return false;
+        }
+    }
+    const validatePasswordConfirm = (value) => {
+        const passwordConfirmInfo = document.querySelector('.info-pwc')
+        if(value === password.value){
+            passwordConfirmInfo.innerHTML = "Passwords match!"
+            return true;
+        }
+        else {
+            passwordConfirmInfo.innerHTML = "Passwords must match."
+            passwordConfirmInfo.style.display = "block";
+            return false;
+        }
+    }
+    // STYLE FUNCTIONS
+    const applyInvalidStyle = (element) => {
+        element.classList.remove("input-valid-state")
+        element.classList.add("input-invalid-state")
+    }
+    const applyValidStyle = (element) => {
+        element.classList.add("input-valid-state")
+        element.classList.remove("input-invalid-state")
+    }
+    const disableSubmitButton = () => {
+        submitButton.disabled = true;
+        submitButton.classList.add("submit-disabled-state")
+    }
+    const enableSubmitButton = () => {
+        submitButton.disabled = false;
+        submitButton.classList.remove("submit-disabled-state")
+    }
+    const updateSubmitButton = () => {
+        if (emailIsValid&& 
+            pwIsValid &&
+            pwcIsValid){
+            enableSubmitButton();
+        }
+        else disableSubmitButton();
+    }
+
+    // EVENT LISTENERS
+    email.addEventListener('input' , (e) => {
+        const emailValue = e.target.value;
+        if(validateEmail(emailValue)){
+            emailIsValid = true;
+            applyValidStyle(email);
+        }
+        else {
+            emailIsValid = false;
+            applyInvalidStyle(email)
+        }
+        updateSubmitButton();
+    });
+
+    password.addEventListener('input', (e) => {
+        const passwordValue = e.target.value;
+        if(validatePassword(passwordValue)){
+            pwIsValid = true;
+            applyValidStyle(password);
+        }
+        else {
+            pwIsValid = false;
+            applyInvalidStyle(password);
+        }
+        updateSubmitButton();
+    });
+
+    passwordConfirm.addEventListener('input',(e) => {
+        const passwordConfirmValue = e.target.value;
+        if(validatePasswordConfirm(passwordConfirmValue)){
+            pwcIsValid = true;
+            applyValidStyle(passwordConfirm);
+        }
+        else {
+            pwcIsValid = false;
+            applyInvalidStyle(passwordConfirm);
+        }
+        updateSubmitButton();
+    });
+
+    //INITIALIZATION
+    updateSubmitButton();
+})
