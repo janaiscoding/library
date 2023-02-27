@@ -4,14 +4,15 @@
     --info-color: rgb(62, 62, 19);
     --valid-color: rgb(63, 94, 15);
     --invalid-color: rgb(98, 20, 20);
-    box-sizing: inherit;
 }
+
 .form-wrapper{
     display:flex;
     justify-content: center;
     align-content: center;
     height: 100vh;
 }
+
 .form {
     display:flex;
     flex-direction: column;
@@ -20,26 +21,14 @@
     text-align: left;
 }
 
-.info,
-.valid-message,
-.invalid-message {
+.info{
+    display:none;
+    color: var(--info-color);
     font-size: 1.2rem;
     font-weight: 400;
     font-style:italic;
     padding-left: 10px;
     margin-top: 5px;
-}
-.info {
-    display:none;
-    color: var(--info-color);
-}
-.valid-message {
-    display:none;
-    color:var(--valid-color)
-}
-.invalid-message{
-    display:none;
-    color:var(--invalid-color)
 }
 .form-group {
     border-radius: 10px;
@@ -81,7 +70,7 @@ input:focus {
     color: #696969;
     border: 1px solid #e5e5e5;
     padding: 15px;
-    width: 80%;
+    width: 97%;
     margin-bottom: 0;
     border-radius: 5px;
     outline: 0;

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById('email')
     const password = document.getElementById('password')
     const passwordConfirm = document.getElementById('password-confirm')
-    const country = document.getElementById('country')
+    const country = document.getElementById('country');
     const zipcode = document.getElementById('zip-code')
     const submitButton = document.getElementById('submit')
 
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return false;
         }
     }
+
     const validatePasswordConfirm = (value) => {
         const passwordConfirmInfo = document.querySelector('.info-pwc')
         if(value === password.value){
@@ -45,6 +46,27 @@ document.addEventListener("DOMContentLoaded", () => {
             passwordConfirmInfo.style.display = "block";
             return false;
         }
+    }
+
+    const validateZipcode = (value) => {
+        const zipcodeInfo = document.querySelector('.info-zc')
+        if (country.value === 'US') {
+            const USRegex = /(^\d{5}$)|(^\d{9}$)|(^\d{5}-\d{4}$)/;
+            if(value.match(USRegex)){
+                zipcodeInfo.innerHTML = "Zipcode is correct."
+                return true;
+            }
+            else {
+                zipcodeInfo.innerHTML = "Zipcode must match your country."
+                zipcodeInfo.style.display = "block";
+                return false;
+            }
+        }
+        else if(country.value === "default") {
+            zipcodeInfo.style.display = "block";
+            zipcodeInfo.innerHTML = "Select your country first.";
+        }
+
     }
     // STYLE FUNCTIONS
     const applyInvalidStyle = (element) => {
@@ -111,7 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         updateSubmitButton();
     });
-
+    zipcode.addEventListener('input', (e) => {
+        const zipcodeValue = e.target.value;
+        if(validateZipcode(zipcodeValue)){
+            zipcodeIsValid = true;
+            applyValidStyle(zipcode);
+        }
+        else {
+            zipcodeIsValid = false;
+            applyInvalidStyle(zipcode);
+        }
+        updateSubmitButton()
+    })
     //INITIALIZATION
     updateSubmitButton();
 })

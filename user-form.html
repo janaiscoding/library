@@ -15,7 +15,7 @@
                 <div class="separate-title">
                     <label for="email">Email</label>
                 </div>
-                    <input type="text" id="email" name="email" placeholder="Your email address">
+                    <input type="text" id="email" name="email" required placeholder="Your email address">
             </div>
             <div class="form-group">
                 <div class="separate-title">
@@ -32,24 +32,22 @@
             <div class="separate-title">
                 <label for="zip-code">Zip Code</label>
             </div>
-                <input type="number" id="zip-code" name="zip-code" placeholder="Your Zipcode">
-                <p class = "info">Must match selected country</p>
-                <p class="invalid-message zip-invalid">Please add a valid ZipCode!</p>
-                <p class="valid-message zip-valid"> ZipCode is valid!</p>  
+                <input type="number" id="zip-code" name="zip-code" required placeholder="Your Zipcode">
+                <p class = "info info-zc">Must match selected country</p>
             </div>
             <div class="form-group">
             <div class="separate-title">
                 <label for="password">Password</label>
             </div>
-                <input type="text" id="password" name="password" placeholder="Your Password">
+                <input type="text" id="password" name="password" required placeholder="Your Password">
                 <p class = "info info-pw"></p>
             </div>
             <div class="form-group">
             <div class="separate-title">
                 <label for="password-confirm">Password Confirmation</label>
                 </div>  
-                <input type="text" id="password-confirm" name="password-confirm" placeholder="Confirm your Password">
-                <p class = "info info-pwc">Passwords must match</p>
+                <input type="text" id="password-confirm" name="password-confirm" required placeholder="Confirm your Password">
+                <p class = "info info-pwc"></p>
             </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary button" id="submit">Submit</button>
