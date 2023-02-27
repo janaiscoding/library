@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const country = document.getElementById('country');
     const zipcode = document.getElementById('zip-code')
     const submitButton = document.getElementById('submit')
+    const correctSubmit = document.querySelector('.success')
 
     //VARIABLES
     let emailIsValid = false;
@@ -55,13 +56,25 @@ document.addEventListener("DOMContentLoaded", () => {
             if(value.match(USRegex)){
                 zipcodeInfo.innerHTML = "Zipcode is correct."
                 return true;
-            }
+            } 
             else {
                 zipcodeInfo.innerHTML = "Zipcode must match your country."
                 zipcodeInfo.style.display = "block";
                 return false;
             }
         }
+        else if(country.value === "DE") {
+            const DERegex = /^0[1-9]\d\d(?<!0100)0|0[1-9]\d\d[1-9]|[1-9]\d{3}[0-8]|[1-9]\d{3}(?<!9999)9$/;
+            if(value.match(DERegex)){
+                zipcodeInfo.innerHTML = "Zipcode is correct."
+                return true;
+            } 
+            else {
+                zipcodeInfo.innerHTML = "Zipcode must match your country."
+                zipcodeInfo.style.display = "block";
+                return false;
+            }
+        }   
         else if(country.value === "default") {
             zipcodeInfo.style.display = "block";
             zipcodeInfo.innerHTML = "Select your country first.";
@@ -88,7 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateSubmitButton = () => {
         if (emailIsValid&& 
             pwIsValid &&
-            pwcIsValid){
+            pwcIsValid && 
+            zipcodeIsValid){
             enableSubmitButton();
         }
         else disableSubmitButton();
@@ -144,6 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
             applyInvalidStyle(zipcode);
         }
         updateSubmitButton()
+    })
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        correctSubmit.style.display = "block";
+        correctSubmit.innerHTML = "Your form has been submitted!"
     })
     //INITIALIZATION
     updateSubmitButton();

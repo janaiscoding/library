@@ -21,7 +21,8 @@
     text-align: left;
 }
 
-.info{
+.info,
+.success{
     display:none;
     color: var(--info-color);
     font-size: 1.2rem;
@@ -106,4 +107,9 @@ input:focus {
 }
 .input-invalid-state:focus{
     border-color: #d11818;
+}
+
+.submit-disabled-state{
+    cursor: not-allowed;
+    background: #222d394c;
 }
