@@ -33,9 +33,6 @@ Step 2 of the project: Refactor using classes:
 - Initially I was stuck on this refactoring for a while, until I read and reread how classes work a bunch of times and finally understood how I can work with the arrays and objects within a class.
 - After it clicked, all I had to do was rewrite the functions so that I call and return the correct parameters.
 
-Step 3 of the project: Learn JavaScript form Validation
--
-
 <h3> Project details </h3>
 
 - This project is part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/node-path-javascript-library) 
