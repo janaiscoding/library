@@ -92,7 +92,7 @@ header {
   background-color: var(--header-background-color);
 }
 
-.header-first-row,
+.header,
 .header-second-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -101,9 +101,9 @@ header {
   justify-self: left;
   padding: 10px 20px;
 }
-.header-first-row {
+.header {
   height: 10vh;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.53);
 }
 
@@ -127,7 +127,7 @@ input {
 }
 
 .header-first-row-right {
-  display: grid;
+  display: flex;
   grid-column: 3/4;
   grid-template-columns: 20px 30px 100px;
   justify-self: right;
@@ -150,7 +150,10 @@ input {
   margin: 0px 20px;
   grid-auto-rows: max-content;
 }
-
+.auth-info-panel{
+  text-align: center;
+  padding-top: 100px;
+}
 .left-content-title {
   display: grid;
   align-self: flex-start;
@@ -196,7 +199,8 @@ form {
 
 /* font styles */
 .right-content-title,
-.left-content-title {
+.left-content-title,
+.auth-info-panel {
   color: var(--text-color-content);
   font-size: 1.5rem;
   font-weight: 900;
@@ -270,13 +274,21 @@ label {
   margin-bottom: 20px;
 }
 a.user-name-bio,
-a.user-name {
+#user-name {
   color: var(--user-text-color);
   font-weight: 600;
   font-size: 1.2rem;
   letter-spacing: 1px;
 }
-
+#user-pic {
+  display: inline-block;
+  background-image: url('./assets/profile_placeholder.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
 /* all hovers */
 button:hover,
 .user-name:hover,
