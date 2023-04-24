@@ -79,10 +79,7 @@ function authStateObserver(user) {
     // Hide sign-in button and auth info pannel.
     signInButtonElement.setAttribute("hidden", "true");
     authInfoPanel.setAttribute("hidden", "true");
-
-    console.log(userName, "has signed in");
   } else {
-    console.log("no user");
     // Hide user's profile and sign-out button.
     userNameElement.setAttribute("hidden", "true");
     userPicElement.setAttribute("hidden", "true");
@@ -135,7 +132,6 @@ const onBookFormSubmit = (e) => {
 };
 
 const onEditBookSubmit = (id) => {
-  console.log(`id from on edit submit button handler function`, id);
   if (
     authorEditElement.value &&
     titleEditElement.value &&
@@ -379,7 +375,6 @@ bookFormElement.addEventListener("submit", onBookFormSubmit);
 editBookFormElement.addEventListener("submit", (e) => {
   e.preventDefault();
   const id = bookIdHandlerElement.innerText;
-  console.log(`id from edit submit button`, id);
   onEditBookSubmit(id);
 });
 
