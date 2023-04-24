@@ -5,3 +5,4 @@ firestore.rules
 storage.rules
 .firebase 
 .github
+.firebase-debug.log
