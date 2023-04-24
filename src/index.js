@@ -150,16 +150,11 @@ clearBtn.addEventListener("click", (e) => {
 });
 
 /// FIREBASE CONVERSION
-
+import { getFirebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDRfBp2wqEx7imMzufht0Mb1C9FNUiRWKI",
-  authDomain: "jana-s-library.firebaseapp.com",
-  projectId: "jana-s-library",
-  storageBucket: "jana-s-library.appspot.com",
-  messagingSenderId: "924456884420",
-  appId: "1:924456884420:web:b479449930a31e122f5191",
-};
-
-initializeApp(firebaseConfig)
+import { getFirestore, collection } from "firebase/firestore";
+// my config
+const firebaseConfig = getFirebaseConfig();
+// init firebase app
+initializeApp(firebaseConfig);
