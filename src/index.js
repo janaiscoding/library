@@ -152,9 +152,42 @@ clearBtn.addEventListener("click", (e) => {
 /// FIREBASE CONVERSION
 import { getFirebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 
-import { getFirestore, collection } from "firebase/firestore";
 // my config
 const firebaseConfig = getFirebaseConfig();
+
+//AUTHENTIFICATION
+
+// SIGN IN
+async function signIn() {
+  const provider = new GoogleAuthProvider();
+  await signInWithPopup(getAuth(), provider);
+}
+
+// SIGN OUT
+function signOutUser() {
+  signOut(getAuth());
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // init firebase app
 initializeApp(firebaseConfig);

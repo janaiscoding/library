@@ -3,6 +3,6 @@ database.rules.json
 firestore.indexes.json
 firestore.rules
 storage.rules
+firebase-debug.log
 .firebase 
 .github
-.firebase-debug.log
