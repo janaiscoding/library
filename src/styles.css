@@ -149,8 +149,10 @@ input {
   gap: 10px;
   margin: 0px 20px;
   grid-auto-rows: max-content;
+  overflow: auto;
+  max-height: 80vh;
 }
-.auth-info-panel{
+.auth-info-panel {
   text-align: center;
   padding-top: 100px;
 }
@@ -282,7 +284,7 @@ a.user-name-bio,
 }
 #user-pic {
   display: inline-block;
-  background-image: url('./assets/profile_placeholder.png');
+  background-image: url("./assets/profile_placeholder.png");
   background-repeat: no-repeat;
   width: 40px;
   height: 40px;
