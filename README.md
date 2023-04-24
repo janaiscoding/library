@@ -7,7 +7,7 @@
 
 ## Live Demo
 
-![](/dist/assets/library-preview.gif)
+![](/dist/assets/firebase-library-preview.gif)
 
 - Live preview on [GitHub Hosting](https://janaiscoding.github.io/library/) or on [Firebase's Hosting](https://jana-s-library.web.app/).
 
