@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "jana-s-library"
+    "default": "jana-s-library",
+    "library": "jana-s-library"
   },
   "targets": {},
   "etags": {}

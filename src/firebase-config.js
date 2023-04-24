@@ -1,4 +1,4 @@
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyDRfBp2wqEx7imMzufht0Mb1C9FNUiRWKI",
   authDomain: "jana-s-library.firebaseapp.com",
   projectId: "jana-s-library",
@@ -15,6 +15,6 @@ export function getFirebaseConfig() {
         "Add your web app's configuration object to firebase-config.js"
     );
   } else {
-    return firebaseConfig;
+    return config;
   }
 }
