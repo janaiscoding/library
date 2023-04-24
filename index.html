@@ -102,110 +102,100 @@
       </div>
     </div>
     <div class="right-wrapper">
-      <header>
-        <div class="header-first-row">
-          <div class="header-first-row-left">
-            <img
-              src="assets/search.png"
-              alt="search icon"
-              width="20px"
-              class="search-icon"
-            />
-            <input
-              type="text"
-              class="search-bar"
-              placeholder="This is just a fake search bar"
-            />
-          </div>
-          <div class="header-first-row-right">
-            <img
-              src="assets/notification.png"
-              alt="notification icon"
-              width="20px"
-              class="notification-icon"
-            />
+      <div class="header">
+        <div class="header-first-row-left">
+          <img
+            src="assets/search.png"
+            alt="search icon"
+            width="20px"
+            class="search-icon"
+          />
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="This is just a fake search bar"
+          />
+        </div>
+        <div class="header-first-row-right">
+          <img
+            src="assets/notification.png"
+            alt="notification icon"
+            width="20px"
+            class="notification-icon"
+          />
+          <div hidden id="user-pic"></div>
+          <div hidden class="user-name-div" id="user-name"></div>
+          <button hidden id="sign-in">Sign in</button>
+          <button hidden id="sign-out">Sign out</button>
+        </div>
+        <div class="header-second-row">
+          <div class="header-second-row-left">
             <img
               src="assets/janaiscoding.png"
               alt="user profile picture"
-              width="30px"
+              width="50px"
               class="profile-picture"
             />
-            <div class="user-name">
-              <a href="https://github.com/JanaIsCoding" class="user-name"
-                >Profile</a
-              >
-            </div>
-          </div>
-          <div class="header-second-row">
-            <div class="header-second-row-left">
-              <img
-                src="assets/janaiscoding.png"
-                alt="user profile picture"
-                width="50px"
-                class="profile-picture"
-              />
-              <div class="greeting">
-                <p class="greeting-text">Hi there,</p>
-                <div class="user-name-bio">
-                  <a
-                    href="https://github.com/JanaIsCoding"
-                    class="user-name-bio"
-                    >Jana (@JanaIsCoding)</a
-                  >
-                </div>
+            <div class="greeting">
+              <p class="greeting-text">Made by</p>
+              <div class="user-name-bio">
+                <a href="https://github.com/JanaIsCoding" class="user-name-bio"
+                  >Jana (@JanaIsCoding)</a
+                >
               </div>
             </div>
           </div>
         </div>
-        <main class="content-container">
-          <div class="library-space">
-            <div class="left-content-title">Book Library</div>
-            <!-- injected library yay -->
+      </div>
+      <div class="auth-info-panel">Sign in to see your library</div>
+      <main class="content-container">
+        <div class="library-space">
+          <div class="left-content-title">Book Library</div>
+          <!-- injected library yay -->
+        </div>
+        <div class="right-content">
+          <div class="right-content-title">Add your books</div>
+          <div class="form-container">
+            <form class="library-form">
+              <label for="title">Title*:</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                maxlength="100"
+              />
+
+              <label for="author">Author*:</label>
+              <input
+                type="text"
+                id="author"
+                name="author"
+                required
+                maxlength="100"
+              />
+
+              <label for="pages">Pages*:</label>
+              <input
+                type="number"
+                id="pages"
+                name="pages"
+                required
+                maxlength="5000"
+              />
+
+              <div class="checkbox-wrapper">
+                <label for="status">Have you read the book?</label>
+                <input type="checkbox" id="status" />
+              </div>
+              <div class="buttons-wrapper">
+                <button class="add-book" type="submit">Submit</button>
+                <button class="clear-inputs" type="button">Clear</button>
+              </div>
+            </form>
           </div>
-          <div class="right-content">
-            <div class="right-content-title">Add your books</div>
-            <div class="form-container">
-              <form class="library-form">
-                <label for="title">Title*:</label>
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  required
-                  maxlength="100"
-                />
-
-                <label for="author">Author*:</label>
-                <input
-                  type="text"
-                  id="author"
-                  name="author"
-                  required
-                  maxlength="100"
-                />
-
-                <label for="pages">Pages*:</label>
-                <input
-                  type="number"
-                  id="pages"
-                  name="pages"
-                  required
-                  maxlength="5000"
-                />
-
-                <div class="checkbox-wrapper">
-                  <label for="status">Have you read the book?</label>
-                  <input type="checkbox" id="status" />
-                </div>
-                <div class="buttons-wrapper">
-                  <button class="add-book" type="submit">Submit</button>
-                  <button class="clear-inputs" type="button">Clear</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </main>
-      </header>
+        </div>
+      </main>
     </div>
   </body>
 </html>
