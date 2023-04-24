@@ -210,10 +210,12 @@ const displayBook = (id, author, title, pages, isRead, timestamp) => {
   // Status based styling
   if (isRead) {
     statusButton.textContent = "Read";
+    statusButton.style.backgroundColor = "#168512";
     bookDiv.classList.remove("status-unread");
     bookDiv.classList.add("status-read");
   } else {
     statusButton.textContent = "Not Read";
+    statusButton.style.backgroundColor = "#a31a20";
     bookDiv.classList.remove("status-read");
     bookDiv.classList.add("status-unread");
   }
@@ -285,7 +287,7 @@ const BOOK_TEMPLATE =
   '<div class="book-buttons-wrapper">' +
   '<button class="status"></button>' +
   '<button class="edit-book">Edit</button>' +
-  '<button class="remove-book">Remove</button>' +
+  '<button class="remove-book">Delete</button>' +
   "</div>" +
   "</div>";
 
