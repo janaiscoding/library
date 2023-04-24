@@ -1,4 +1,5 @@
 // Data Structures. The Book Object will have 4 keys.
+import "./styles.css";
 //new book_name = new Book(a,b,c,d); = new instance of book
 class Book {
   constructor(
@@ -158,7 +159,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 // my config
 const firebaseConfig = getFirebaseConfig();
@@ -175,19 +176,6 @@ async function signIn() {
 function signOutUser() {
   signOut(getAuth());
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // init firebase app
 initializeApp(firebaseConfig);
