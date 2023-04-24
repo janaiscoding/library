@@ -1,4 +1,4 @@
-/// FIREBASE CONVERSION
+// FIREBASE CONVERSION
 import { getFirebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
 import {
@@ -79,7 +79,8 @@ function authStateObserver(user) {
   } else {
     // Hide user's profile and sign-out button.
     userNameElement.setAttribute("hidden", "true");
-    userPicElement.setAttribute("hidden", "true");
+    userPicElement.style.backgroundImage =
+      "url(" + "../assets/profile_placeholder.png" + ")";
     signOutButtonElement.setAttribute("hidden", "true");
     openModalElement.setAttribute("hidden", "true");
     // Hide user content
