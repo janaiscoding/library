@@ -270,10 +270,15 @@ label {
   display: flex;
   justify-content: space-between;
 }
-#close-modal {
+#close-modal,
+.remove-book {
   background-color: #a31a20;
 }
-.add-book {
+.edit-book {
+  background-color: #395c87;
+}
+.add-book,
+#open-modal {
   background-color: #168512;
 }
 .status-read {
