@@ -1,6 +1,3 @@
-// Data Structures. The Book Object will have 4 keys.
-import "./styles.css";
-
 /// FIREBASE CONVERSION
 import { getFirebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
