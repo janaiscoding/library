@@ -79,8 +79,9 @@ function authStateObserver(user) {
     userNameElement.removeAttribute("hidden");
     userPicElement.removeAttribute("hidden");
     signOutButtonElement.removeAttribute("hidden");
+    openModalElement.removeAttribute("hidden");
     // Show user content
-    userContentContainer.style.display = "grid";
+    userContentContainer.style.display = "flex";
     // Hide sign-in button and auth info pannel.
     signInButtonElement.setAttribute("hidden", "true");
     authInfoPanel.setAttribute("hidden", "true");
@@ -92,6 +93,7 @@ function authStateObserver(user) {
     userNameElement.setAttribute("hidden", "true");
     userPicElement.setAttribute("hidden", "true");
     signOutButtonElement.setAttribute("hidden", "true");
+    openModalElement.setAttribute("hidden", "true");
     // Hide user content
     userContentContainer.style.display = "none";
     // Show sign-in button and auth info panel.
@@ -132,6 +134,7 @@ const onBookFormSubmit = (e) => {
       pagesInputElement.value
     ).then(() => {
       bookFormElement.reset();
+      modalElement.style.display = "none";
     });
   }
 };
@@ -164,39 +167,89 @@ function loadBooks() {
   onSnapshot(recentBooksQuery, function (snapshot) {
     snapshot.docChanges().forEach(function (change) {
       if (change.type === "removed") {
-        deleteMessage(change.doc.id);
+        // deleteBook(change.doc.id);
+        console.log("this what happens when i delete book");
       } else {
         const book = change.doc.data();
-        displayBook(change.doc.id, book.author, book.title, book.pages);
+        displayBook(
+          change.doc.id,
+          book.author,
+          book.title,
+          book.pages,
+          book.timestamp
+        );
       }
     });
   });
 }
-const displayBook = (id, author, title, pages) => {
-  const librarySpace = document.querySelector(".library-space"); //where the cards will fit
+const displayBook = (id, author, title, pages, timestamp) => {
+  //Editing an existing book based on book id || Creating a new book
+  const bookDiv =
+    document.getElementById(id) || createAndInsertBook(id, timestamp);
 
-  const cardDiv = document.getElementById(id) || document.createElement("div");
-  const bookTitle = document.createElement("div");
-  const bookAuthor = document.createElement("div");
-  const bookPages = document.createElement("div");
-
-  //full card
-  cardDiv.classList.add("book");
-  cardDiv.setAttribute("id", id);
-
-  // card elements
-  bookTitle.textContent = title;
-  bookTitle.classList.add("book-title");
+  const bookAuthor = bookDiv.querySelector(".book-author");
+  const bookTitle = bookDiv.querySelector(".book-title");
+  const bookPages = bookDiv.querySelector(".book-pages");
+  const addedAt = bookDiv.querySelector(".book-timestamp");
 
   bookAuthor.textContent = `Written by ${author}`;
-  bookAuthor.classList.add("book-author");
-
+  bookTitle.textContent = title;
   bookPages.textContent = `${pages} pages`;
-  bookPages.classList.add("book-pages");
-  // cardDiv.appendChild(bookTitle,bookAuthor,bookPages,bookStatus,bookRemoveBtn);
-  cardDiv.append(bookTitle, bookAuthor, bookPages);
-  //appending
-  librarySpace.appendChild(cardDiv);
+  addedAt.textContent = `Added at ${timestamp.toDate().toTimeString()}`;
+  // to add : remove and edit button
+};
+
+// Template for messages.
+const BOOK_TEMPLATE =
+  '<div class="book">' +
+  '<div class="book-title"></div>' +
+  '<div class="book-author"></div>' +
+  '<div class="book-pages"></div>' +
+  '<div class="book-timestamp"></div>' +
+  '<div class="book-buttons-wrapper">'+
+  '<button class="status">Read/Not Read</button>' +
+  '<button class="remove-book">Remove</button>' +
+  '</div>' +
+  "</div>";
+
+const createAndInsertBook = (id, timestamp) => {
+  const container = document.createElement("div");
+  container.innerHTML = BOOK_TEMPLATE;
+  const div = container.firstChild;
+  div.setAttribute("id", id); //setting the id, then i get it with the other function and complete it
+
+  // If timestamp is null, assume we've gotten a brand new book.
+  // https://stackoverflow.com/a/47781432/4816918
+  timestamp = timestamp ? timestamp.toMillis() : Date.now();
+  div.setAttribute("timestamp", timestamp);
+
+  // figure out where to insert new message
+  const existingBooks = librarySpaceElement.children;
+  if (existingBooks.length === 0) {
+    librarySpaceElement.appendChild(div); //if there's none, just push it in
+  } else {
+    let messageListNode = existingBooks[0];
+
+    while (messageListNode) {
+      const messageListNodeTime = messageListNode.getAttribute("timestamp");
+
+      if (!messageListNodeTime) {
+        throw new Error(
+          `Child ${messageListNode.id} has no 'timestamp' attribute`
+        );
+      }
+
+      if (messageListNodeTime < timestamp) {
+        break;
+      }
+
+      messageListNode = messageListNode.nextSibling;
+    }
+
+    librarySpaceElement.insertBefore(div, messageListNode);
+  }
+
+  return div;
 };
 // Shortcuts to DOM Elements.
 const signInButtonElement = document.getElementById("sign-in");
@@ -209,11 +262,21 @@ const authorInputElement = document.getElementById("author");
 const titleInputElement = document.getElementById("title");
 const pagesInputElement = document.getElementById("pages");
 const bookFormElement = document.getElementById("book-form");
+const openModalElement = document.getElementById("open-modal");
+const closeModalElement = document.getElementById("close-modal");
+const modalElement = document.getElementById("modal");
+const librarySpaceElement = document.getElementById("library-space");
 
 // Event Listeners
 signOutButtonElement.addEventListener("click", signOutUser);
 signInButtonElement.addEventListener("click", signIn);
 bookFormElement.addEventListener("submit", onBookFormSubmit);
+openModalElement.onclick = () => {
+  modalElement.style.display = "block";
+};
+closeModalElement.onclick = () => {
+  modalElement.style.display = "none";
+};
 // Initialize Firebase
 // Retrieve my config.
 const firebaseConfig = getFirebaseConfig();
