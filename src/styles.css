@@ -184,7 +184,8 @@ form {
   border-radius: 5px;
 }
 
-#modal {
+.modal,
+.edit-modal {
   display: none;
   position: fixed;
   z-index: 1; /* Sit on top */

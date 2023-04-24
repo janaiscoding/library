@@ -19,18 +19,11 @@ import {
   orderBy,
   limit,
   onSnapshot,
-  setDoc,
   updateDoc,
   doc,
   serverTimestamp,
   deleteDoc,
 } from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
 
 //1. Authentification
 // 1.1 Sign in the user - returns a promise
@@ -136,11 +129,28 @@ const onBookFormSubmit = (e) => {
       checkboxInputElement.checked
     ).then(() => {
       bookFormElement.reset();
-      modalElement.style.display = "none";
+      modalFormElement.style.display = "none";
     });
   }
 };
 
+const onEditBookSubmit = (id) => {
+  console.log(`id from on edit submit button handler function`, id);
+  if (
+    authorEditElement.value &&
+    titleEditElement.value &&
+    pagesEditElement.value &&
+    checkSignedInWithMessage()
+  ) {
+    updateBook(
+      id,
+      authorEditElement.value,
+      titleEditElement.value,
+      pagesEditElement.value,
+      checkboxEditElement.checked
+    );
+  }
+};
 // 2.2 Sends book to the collection from the frontend
 async function saveBook(author, title, pages, isRead) {
   // Add a new book entry to the Firebase database.
@@ -197,12 +207,13 @@ const displayBook = (id, author, title, pages, isRead, timestamp) => {
   const bookPages = bookDiv.querySelector(".book-pages");
   const removeButton = bookDiv.querySelector(".remove-book");
   const statusButton = bookDiv.querySelector(".status");
+  const editButton = bookDiv.querySelector(".edit-book");
 
   bookAuthor.textContent = `Written by ${author}`;
   bookTitle.textContent = title;
   bookPages.textContent = `${pages} pages`;
 
-  // initial status
+  // Status based styling
   if (isRead) {
     statusButton.textContent = "Read";
     bookDiv.classList.remove("status-unread");
@@ -213,17 +224,47 @@ const displayBook = (id, author, title, pages, isRead, timestamp) => {
     bookDiv.classList.add("status-unread");
   }
 
-  // to add : remove and edit button
+  // Event Listeners on singular books
   removeButton.addEventListener("click", () => {
     deleteBook(id);
   });
   statusButton.addEventListener("click", () => {
-    let isReadUpdated = !isRead;
-    changeBookStatus(id, isReadUpdated);
+    isRead = !isRead;
+    updateReadStatus(id, isRead);
+  });
+  // edit button?
+  editButton.addEventListener("click", () => {
+    // open the form with the book's data
+    editModalElement.style.display = "block";
+    receiveBookForm(id, author, title, pages, isRead);
+    //
   });
 };
+// 2.5 Receives the current book's data in order to be edited
+const receiveBookForm = (id, author, title, pages, isRead) => {
+  bookIdHandlerElement.innerText = id;
+  authorEditElement.value = author;
+  titleEditElement.value = title;
+  pagesEditElement.value = pages;
+  checkboxEditElement.checked = isRead;
+};
+// 2.6 Receives the new data and updates the selected book
+const updateBook = (id, author, title, pages, isRead) => {
+  const db = getFirestore();
+  const docRef = doc(db, "books", id);
 
-// 2.5 Function for deleting a certain book
+  updateDoc(docRef, {
+    author: author,
+    title: title,
+    pages: pages,
+    isRead: isRead,
+    timestamp: serverTimestamp(),
+  }).then(() => {
+    editBookFormElement.reset();
+    editModalElement.style.display = "none";
+  });
+};
+// 2.7 Function for deleting a certain book
 const deleteBook = (id) => {
   const bookDiv = document.getElementById(id);
   const db = getFirestore();
@@ -233,15 +274,15 @@ const deleteBook = (id) => {
     bookDiv.parentNode.removeChild(bookDiv);
   }
 };
-// 2.6 Change a book's read status
-const changeBookStatus = (id, isRead) => {
+// 2.8 Change a book's read status
+const updateReadStatus = (id, isRead) => {
   const db = getFirestore();
   const docRef = doc(db, "books", id);
   updateDoc(docRef, {
     isRead: isRead,
   });
 };
-// 2.6 Template for book's html.
+// 2.9 Template for book's html.
 const BOOK_TEMPLATE =
   '<div class="book">' +
   '<div class="book-title"></div>' +
@@ -249,11 +290,12 @@ const BOOK_TEMPLATE =
   '<div class="book-pages"></div>' +
   '<div class="book-buttons-wrapper">' +
   '<button class="status"></button>' +
+  '<button class="edit-book">Edit</button>' +
   '<button class="remove-book">Remove</button>' +
   "</div>" +
   "</div>";
 
-// 2.7  Creates the div and pushes them to the DOM
+// 2.10  Creates the div and pushes them to the DOM
 const createAndInsertBook = (id, timestamp) => {
   const container = document.createElement("div");
   container.innerHTML = BOOK_TEMPLATE;
@@ -295,34 +337,65 @@ const createAndInsertBook = (id, timestamp) => {
 };
 
 // Shortcuts to DOM Elements.
+
+// User and Login Info
 const signInButtonElement = document.getElementById("sign-in");
 const signOutButtonElement = document.getElementById("sign-out");
 const userNameElement = document.getElementById("user-name");
 const userPicElement = document.getElementById("user-pic");
 const userContentContainer = document.querySelector(".content-container");
 const authInfoPanel = document.querySelector(".auth-info-panel");
+
+// Main add book form
 const authorInputElement = document.getElementById("author");
 const titleInputElement = document.getElementById("title");
 const pagesInputElement = document.getElementById("pages");
 const checkboxInputElement = document.getElementById("status");
 const bookFormElement = document.getElementById("book-form");
+// Modal for normal form
 const openModalElement = document.getElementById("open-modal");
 const closeModalElement = document.getElementById("close-modal");
-const modalElement = document.getElementById("modal");
+const modalFormElement = document.querySelector(".modal");
+
+// Library content
 const librarySpaceElement = document.getElementById("library-space");
+
+// Edit book form
+const bookIdHandlerElement = document.getElementById("edit-handler-id");
+const authorEditElement = document.getElementById("edit-author");
+const titleEditElement = document.getElementById("edit-title");
+const pagesEditElement = document.getElementById("edit-pages");
+const checkboxEditElement = document.getElementById("edit-status");
+const editBookFormElement = document.getElementById("book-edit-form");
+
+// Modal for edit book
+const editModalElement = document.querySelector(".edit-modal");
+const closeEditModalElement = document.getElementById("close-edit-modal");
 
 // Event Listeners
 signOutButtonElement.addEventListener("click", signOutUser);
 signInButtonElement.addEventListener("click", signIn);
 bookFormElement.addEventListener("submit", onBookFormSubmit);
+editBookFormElement.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const id = bookIdHandlerElement.innerText;
+  console.log(`id from edit submit button`, id);
+  onEditBookSubmit(id);
+});
 
+// Add Book - Form Modal
 openModalElement.onclick = () => {
-  modalElement.style.display = "block";
+  modalFormElement.style.display = "block";
 };
 closeModalElement.onclick = () => {
-  modalElement.style.display = "none";
+  modalFormElement.style.display = "none";
+};
+// Edit Book - Form Modal
+closeEditModalElement.onclick = () => {
+  editModalElement.style.display = "none";
 };
 // Initialize Firebase
+
 // Retrieve my config.
 const firebaseConfig = getFirebaseConfig();
 initializeApp(firebaseConfig);
