@@ -1,7 +1,7 @@
 <h1> Jana's Library </h1>
 
 # Live Demo 
-![](https://github.com/janaiscoding/library/blob/main/assets/library-preview.gif)
+![](/dist/assets/library-preview.gif)
 
 - Live preview [here](https://janaiscoding.github.io/library/).
 - Library app. Storing books temporarily with JS, using Classes, Objects and Array methods.</br> 
