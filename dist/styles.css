@@ -123,7 +123,7 @@ img.profile-picture {
   justify-self: right;
 }
 input {
-  border: 1px solid black;
+  border: 1px solid #0000003b;
   height: 30px;
   border-radius: 4px;
   font-size: 1.2rem;
@@ -195,8 +195,14 @@ form {
 
 .checkbox-wrapper {
   vertical-align: middle;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
+#edit-status,
+#status {
+  margin-bottom: 10px;
+}
 /* font styles */
 .right-content-title,
 .left-content-title,
@@ -207,7 +213,7 @@ form {
   font-style: italic;
   letter-spacing: 1px;
 }
-.left-content-title{
+.left-content-title {
   margin-bottom: 20px;
 }
 .greeting-text {
