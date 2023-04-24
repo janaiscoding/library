@@ -1,8 +1,8 @@
 node_modules/
-database.rules.json
-firestore.indexes.json
-firestore.rules
-storage.rules
-firebase-debug.log
-.firebase 
-.github
+database.rules.json/
+firestore.indexes.json/
+firestore.rules/
+storage.rules/
+firebase-debug.log/
+.firebase/
+.github/
