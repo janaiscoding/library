@@ -158,7 +158,7 @@
           <!-- injected library yay -->
         </div>
       </main>
-      <div id="modal">
+      <div class="modal">
           <form class="library-form" id="book-form">
             <div class="right-content-title">Add a new book</div>
             <label for="title">Title*:</label>
@@ -187,7 +187,6 @@
               required
               maxlength="5000"
             />
-
             <div class="checkbox-wrapper">
               <label for="status">Have you read the book?</label>
               <input type="checkbox" id="status" />
@@ -198,6 +197,47 @@
             </div>
           </form>
       </div>
+    </div>
+    <div class="edit-modal">
+        <form class="library-form" id="book-edit-form">
+          <div class="right-content-title">Edit your book</div>
+          <div id="edit-handler-id" hidden></div>
+          <label for="title">Title*:</label>
+          <input
+            type="text"
+            id="edit-title"
+            name="edit-title"
+            required
+            maxlength="100"
+          />
+
+          <label for="author">Author*:</label>
+          <input
+            type="text"
+            id="edit-author"
+            name="edit-author"
+            required
+            maxlength="100"
+          />
+
+          <label for="pages">Pages*:</label>
+          <input
+            type="number"
+            id="edit-pages"
+            name="edit-pages"
+            required
+            maxlength="5000"
+          />
+
+          <div class="checkbox-wrapper">
+            <label for="edit-status">Have you read the book?</label>
+            <input type="checkbox" id="edit-status" />
+          </div>
+          <div class="buttons-wrapper">
+            <button class="edit-book" type="submit">Edit</button>
+            <button id="close-edit-modal" type="button">Close</button>
+          </div>
+        </form>
     </div>
   </body>
 </html>
