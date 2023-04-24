@@ -153,7 +153,7 @@ input {
   overflow: auto;
   max-height: 80vh;
 }
-.book-buttons-wrapper{
+.book-buttons-wrapper {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -206,7 +206,9 @@ form {
   font-style: italic;
   letter-spacing: 1px;
 }
-
+.left-content-title{
+  margin-bottom: 20px;
+}
 .greeting-text {
   color: var(--text-color-content);
   font-size: 0.9rem;
@@ -267,8 +269,11 @@ label {
 .add-book {
   background-color: #168512;
 }
-.remove-book {
-  margin-bottom: 20px;
+.status-read {
+  border-left: solid 8px #168512;
+}
+.status-unread {
+  border-left: solid 8px #a31a20;
 }
 a.user-name-bio,
 #user-name {
